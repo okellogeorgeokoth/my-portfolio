@@ -46,16 +46,16 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a href="https://wa.me/+254790987845" className="text-gray-400 hover:text-white">
                 <FaWhatsapp className="text-xl cursor-pointer hover:text-green-500" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a href="https://x.com/GeorgeTechElite" className="text-gray-400 hover:text-white">
                 <FaXTwitter className="text-xl cursor-pointer hover:text-black" />
               </a>
               <a href="#" className="text-gray-400 hover:text-white">
                 <BsInstagram className="text-xl cursor-pointer hover:text-pink-600" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a href="https://www.linkedin.com/in/george-o-a76513136/" className="text-gray-400 hover:text-white">
                 <FaLinkedinIn className="text-xl cursor-pointer hover:text-blue-600" />
               </a>
             </div>

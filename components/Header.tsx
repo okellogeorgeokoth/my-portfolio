@@ -74,7 +74,7 @@ export default function Header() {
           animate="visible"
         >
           <motion.a
-            href="https://www.linkedin.com"
+            href="https://www.linkedin.com/in/george-o-a76513136/"
             target="_blank"
             rel="noopener noreferrer"
             variants={item}
@@ -82,7 +82,7 @@ export default function Header() {
             <FaLinkedinIn className="text-xl cursor-pointer hover:text-blue-600" />
           </motion.a>
           <motion.a
-            href="https://github.com"
+            href="https://github.com/okellogeorgeokoth"
             target="_blank"
             rel="noopener noreferrer"
             variants={item}
@@ -90,7 +90,7 @@ export default function Header() {
             <FaSquareGithub className="text-xl cursor-pointer hover:text-gray-600" />
           </motion.a>
           <motion.a
-            href="https://twitter.com"
+            href="https://x.com/GeorgeTechElite"
             target="_blank"
             rel="noopener noreferrer"
             variants={item}
@@ -115,7 +115,7 @@ export default function Header() {
           animate="visible"
         >
           <motion.a
-            href="https://wa.me/yourphonenumber"
+            href="https://wa.me/+254790987845"
             target="_blank"
             rel="noopener noreferrer"
             variants={item}
@@ -123,7 +123,7 @@ export default function Header() {
             <FaWhatsapp className="text-xl cursor-pointer hover:text-green-500" />
           </motion.a>
           <motion.a
-            href="mailto:youremail@example.com"
+            href="mailto:okoth603@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
             variants={item}
