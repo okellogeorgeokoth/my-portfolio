@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import { FaHome, FaUser, FaProjectDiagram, FaCode, FaBlog, FaEnvelope } from 'react-icons/fa';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,12 +53,24 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex justify-center flex-1 space-x-8">
-            <Link href="/" className="hover:text-gray-400">Home</Link>
-            <Link href="/aboutus" className="hover:text-gray-400">About</Link>
-            <Link href="/projects" className="hover:text-gray-400">Projects</Link>
-            <Link href="/skills" className="hover:text-gray-400">Skills</Link>
-            <Link href="/blogs" className="hover:text-gray-400">Blogs</Link>
-            <Link href="/contactus" className="hover:text-gray-400">Contact</Link>
+            <Link href="/" className="hover:text-gray-400 flex items-center">
+              <FaHome className="mr-2" /> Home
+            </Link>
+            <Link href="/aboutus" className="hover:text-gray-400 flex items-center">
+              <FaUser className="mr-2" /> About
+            </Link>
+            <Link href="/projects" className="hover:text-gray-400 flex items-center">
+              <FaProjectDiagram className="mr-2" /> Projects
+            </Link>
+            <Link href="/skills" className="hover:text-gray-400 flex items-center">
+              <FaCode className="mr-2" /> Skills
+            </Link>
+            <Link href="/blogs" className="hover:text-gray-400 flex items-center">
+              <FaBlog className="mr-2" /> Blogs
+            </Link>
+            <Link href="/contactus" className="hover:text-gray-400 flex items-center">
+              <FaEnvelope className="mr-2" /> Contact
+            </Link>
           </div>
         </div>
 
@@ -86,12 +99,24 @@ export default function Navbar() {
                 ></path>
               </svg>
             </button>
-            <Link href="/" className="block py-2 hover:text-gray-400">Home</Link>
-            <Link href="/aboutus" className="block py-2 hover:text-gray-400">About</Link>
-            <Link href="/projects" className="block py-2 hover:text-gray-400">Projects</Link>
-            <Link href="/skills" className="block py-2 hover:text-gray-400">Skills</Link>
-            <Link href="/blogs" className="block py-2 hover:text-gray-400">Blogs</Link>
-            <Link href="/contactus" className="block py-2 hover:text-gray-400">Contact</Link>
+            <Link href="/" className="block py-2 hover:text-gray-400 items-center">
+              <FaHome className="mr-2" /> Home
+            </Link>
+            <Link href="/aboutus" className="block py-2 hover:text-gray-400 items-center">
+              <FaUser className="mr-2" /> About
+            </Link>
+            <Link href="/projects" className="block py-2 hover:text-gray-400 items-center">
+              <FaProjectDiagram className="mr-2" /> Projects
+            </Link>
+            <Link href="/skills" className="block py-2 hover:text-gray-400 items-center">
+              <FaCode className="mr-2" /> Skills
+            </Link>
+            <Link href="/blogs" className="block py-2 hover:text-gray-400 items-center">
+              <FaBlog className="mr-2" /> Blogs
+            </Link>
+            <Link href="/contactus" className="block py-2 hover:text-gray-400 items-center">
+              <FaEnvelope className="mr-2" /> Contact
+            </Link>
           </div>
         </div>
       </div>
