@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function AboutUs() {
   return (
@@ -35,9 +36,11 @@ export default function AboutUs() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <img
+            <Image
               src="/path/to/team-member-1.jpg" // Replace with your image path
               alt="Team Member 1"
+              width={128} // Set the width
+              height={128} // Set the height
               className="w-32 h-32 rounded-full mx-auto mb-4"
             />
             <h3 className="text-xl font-semibold mb-2">John Doe</h3>
@@ -51,9 +54,11 @@ export default function AboutUs() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <img
+            <Image
               src="/path/to/team-member-2.jpg" // Replace with your image path
               alt="Team Member 2"
+              width={128} // Set the width
+              height={128} // Set the height
               className="w-32 h-32 rounded-full mx-auto mb-4"
             />
             <h3 className="text-xl font-semibold mb-2">Jane Smith</h3>
@@ -67,9 +72,11 @@ export default function AboutUs() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
-            <img
+            <Image
               src="/path/to/team-member-3.jpg" // Replace with your image path
               alt="Team Member 3"
+              width={128} // Set the width
+              height={128} // Set the height
               className="w-32 h-32 rounded-full mx-auto mb-4"
             />
             <h3 className="text-xl font-semibold mb-2">Mike Johnson</h3>

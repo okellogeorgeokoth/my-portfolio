@@ -5,6 +5,7 @@ import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import Navbar from '@/components/Navbar'
 import Projects from '@/components/Projects'
+import Reviews from '@/components/Reviews'
 import Skills from '@/components/Skills'
 import React from 'react'
 
@@ -18,6 +19,7 @@ function page() {
       <AboutUs />
       <Projects/>
       <Skills/>
+      <Reviews/>
       <Contactus/>
       <Footer />
        </div>

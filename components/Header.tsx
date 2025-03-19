@@ -34,7 +34,7 @@ export default function Header() {
 
     // Clean up the interval on component unmount
     return () => clearInterval(interval);
-  }, []);
+  }, [phrases]);
 
   // Animation variants for the container
   const container = {

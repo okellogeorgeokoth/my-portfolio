@@ -62,7 +62,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Here are some of the skills I've developed over the years. I'm always learning and improving to stay ahead in the ever-evolving tech landscape.
+          Here are some of the skills I&apos;ve developed over the years. I&apos;m always learning and improving to stay ahead in the ever-evolving tech landscape.
         </motion.p>
 
         {/* Skills Grid */}

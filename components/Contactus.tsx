@@ -25,7 +25,7 @@ export default function ContactUs() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Have a question or want to work together? Feel free to reach out! I'll get back to you as soon as possible.
+          Have a question or want to work together? Feel free to reach out! I&apos;ll get back to you as soon as possible.
         </motion.p>
 
         {/* Contact Form and Social Media Links */}

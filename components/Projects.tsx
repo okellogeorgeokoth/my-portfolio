@@ -47,7 +47,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Explore some of the projects I've worked on. Each project showcases my skills in design, development, and problem-solving.
+          Explore some of the projects I&apos;ve worked on. Each project showcases my skills in design, development, and problem-solving.
         </motion.p>
 
         {/* Projects Grid */}
