@@ -2,6 +2,7 @@ import React from 'react';
 import { BsInstagram } from 'react-icons/bs';
 import { FaLinkedinIn, FaWhatsapp } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -20,10 +21,24 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="text-sm text-gray-400">
-              <li className="mb-2"><a href="#" className="hover:text-white">Home</a></li>
-              <li className="mb-2"><a href="#" className="hover:text-white">Services</a></li>
-              <li className="mb-2"><a href="#" className="hover:text-white">About</a></li>
-              <li className="mb-2"><a href="#" className="hover:text-white">Contact</a></li>
+              <li className="mb-2">
+                <Link href="/" className="hover:text-white">Home</Link>
+              </li>
+              <li className="mb-2">
+                <Link href="/aboutus" className="hover:text-white">About</Link>
+              </li>
+              <li className="mb-2">
+                <Link href="/projects" className="hover:text-white">Projects</Link>
+              </li>
+              <li className="mb-2">
+                <Link href="/skills" className="hover:text-white">Skills</Link>
+              </li>
+              <li className="mb-2">
+                <Link href="/blogs" className="hover:text-white">Blogs</Link>
+              </li>
+              <li className="mb-2">
+                <Link href="/contactus" className="hover:text-white">Contact</Link>
+              </li>
             </ul>
           </div>
 
@@ -32,10 +47,10 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white">
-              <FaWhatsapp className="text-xl cursor-pointer hover:text-green-500" />
+                <FaWhatsapp className="text-xl cursor-pointer hover:text-green-500" />
               </a>
               <a href="#" className="text-gray-400 hover:text-white">
-               <FaXTwitter className="text-xl cursor-pointer hover:text-black" />
+                <FaXTwitter className="text-xl cursor-pointer hover:text-black" />
               </a>
               <a href="#" className="text-gray-400 hover:text-white">
                 <BsInstagram className="text-xl cursor-pointer hover:text-pink-600" />
@@ -49,7 +64,7 @@ export default function Footer() {
 
         {/* Copyright Section */}
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
-          &copy; {new Date().getFullYear()} Your Company. All rights reserved.
+          &copy; {new Date().getFullYear()} George Okello. All rights reserved.
         </div>
       </div>
     </footer>

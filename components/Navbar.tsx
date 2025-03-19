@@ -1,10 +1,11 @@
 "use client";
 import React, { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null); // Explicitly define the ref type
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -14,10 +15,9 @@ export default function Navbar() {
     setIsMenuOpen(false);
   };
 
-  // Close menu when clicking outside of it
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => { // Add type for event
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) { // Cast event.target to Node
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         closeMenu();
       }
     };
@@ -32,7 +32,6 @@ export default function Navbar() {
     <nav className="fixed w-full z-50 bg-transparent md:bg-white shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
-          {/* Hamburger Menu for Mobile */}
           <div className="md:hidden">
             <button onClick={toggleMenu} className="focus:outline-none">
               <svg
@@ -52,18 +51,16 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Desktop Navigation Links */}
           <div className="hidden md:flex justify-center flex-1 space-x-8">
-            <a href="#home" className="hover:text-gray-400">Home</a>
-            <a href="/about" className="hover:text-gray-400">About</a>
-            <a href="#projects" className="hover:text-gray-400">Projects</a>
-            <a href="#skills" className="hover:text-gray-400">Skills</a>
-            <a href="#skills" className="hover:text-gray-400">Blogs</a>
-            <a href="#contact" className="hover:text-gray-400">Contact</a>
+            <Link href="/" className="hover:text-gray-400">Home</Link>
+            <Link href="/aboutus" className="hover:text-gray-400">About</Link>
+            <Link href="/projects" className="hover:text-gray-400">Projects</Link>
+            <Link href="/skills" className="hover:text-gray-400">Skills</Link>
+            <Link href="/blogs" className="hover:text-gray-400">Blogs</Link>
+            <Link href="/contactus" className="hover:text-gray-400">Contact</Link>
           </div>
         </div>
 
-        {/* Mobile Navigation Links */}
         <div
           ref={menuRef}
           onMouseEnter={() => setIsHovered(true)}
@@ -89,12 +86,12 @@ export default function Navbar() {
                 ></path>
               </svg>
             </button>
-            <a href="#home" className="block py-2 hover:text-gray-400">Home</a>
-            <a href="#about" className="block py-2 hover:text-gray-400">About</a>
-            <a href="#projects" className="block py-2 hover:text-gray-400">Projects</a>
-            <a href="#skills" className="block py-2 hover:text-gray-400">Skills</a>
-            <a href="#skills" className="block py-2 hover:text-gray-400">Blogs</a>
-            <a href="#contact" className="block py-2 hover:text-gray-400">Contact</a>
+            <Link href="/" className="block py-2 hover:text-gray-400">Home</Link>
+            <Link href="/aboutus" className="block py-2 hover:text-gray-400">About</Link>
+            <Link href="/projects" className="block py-2 hover:text-gray-400">Projects</Link>
+            <Link href="/skills" className="block py-2 hover:text-gray-400">Skills</Link>
+            <Link href="/blogs" className="block py-2 hover:text-gray-400">Blogs</Link>
+            <Link href="/contactus" className="block py-2 hover:text-gray-400">Contact</Link>
           </div>
         </div>
       </div>
