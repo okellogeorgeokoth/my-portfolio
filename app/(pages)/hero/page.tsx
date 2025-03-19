@@ -27,7 +27,7 @@ function Hero() {
           className="text-6xl font-bold mb-4"
           whileHover={{ scale: 1.05 }}
         >
-          Hi, I&aposm [Your Name]
+          Hi, I &apos m [Your Name]
         </motion.h1>
         <motion.p 
           className="text-xl mb-8"
