@@ -66,9 +66,9 @@ export default function Header() {
           I am <span className="text-blue-600">{text}</span>
         </h1>
 
-        {/* Left Side: First 4 Icons */}
+        {/* Left Side: First 4 Icons (Hidden on Small Screens) */}
         <motion.div
-          className="flex space-x-4 mb-4 sm:mb-0"
+          className="hidden sm:flex space-x-4 mb-4 sm:mb-0"
           variants={container}
           initial="hidden"
           animate="visible"
@@ -107,7 +107,7 @@ export default function Header() {
           </motion.a>
         </motion.div>
 
-        {/* Right Side: WhatsApp and Mail Icons */}
+        {/* Right Side: WhatsApp and Mail Icons (Visible on All Screens) */}
         <motion.div
           className="flex space-x-4"
           variants={container}
