@@ -1,44 +1,39 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaReact, FaJsSquare, FaCss3Alt, FaNodeJs, FaPython, FaGitAlt } from 'react-icons/fa';
 
 export default function Skills() {
   const skills = [
     {
       id: 1,
       name: 'React',
-      icon: 'fab fa-react', // Font Awesome icon class
-      proficiency: 90, // Proficiency percentage
+      icon: <FaReact className="text-5xl text-blue-600" />,
     },
     {
       id: 2,
       name: 'JavaScript',
-      icon: 'fab fa-js-square', // Font Awesome icon class
-      proficiency: 95,
+      icon: <FaJsSquare className="text-5xl text-yellow-400" />,
     },
     {
       id: 3,
       name: 'Tailwind CSS',
-      icon: 'fab fa-css3-alt', // Font Awesome icon class
-      proficiency: 85,
+      icon: <FaCss3Alt className="text-5xl text-blue-400" />,
     },
     {
       id: 4,
       name: 'Node.js',
-      icon: 'fab fa-node-js', // Font Awesome icon class
-      proficiency: 80,
+      icon: <FaNodeJs className="text-5xl text-green-600" />,
     },
     {
       id: 5,
       name: 'Python',
-      icon: 'fab fa-python', // Font Awesome icon class
-      proficiency: 75,
+      icon: <FaPython className="text-5xl text-blue-500" />,
     },
     {
       id: 6,
       name: 'Git',
-      icon: 'fab fa-git-alt', // Font Awesome icon class
-      proficiency: 90,
+      icon: <FaGitAlt className="text-5xl text-red-600" />,
     },
   ];
 
@@ -77,24 +72,11 @@ export default function Skills() {
             >
               {/* Skill Icon */}
               <div className="text-center mb-4">
-                <i className={`${skill.icon} text-5xl text-blue-600`}></i>
+                {skill.icon}
               </div>
 
               {/* Skill Name */}
               <h3 className="text-2xl font-semibold text-center mb-4">{skill.name}</h3>
-
-              {/* Proficiency Bar */}
-              <div className="w-full bg-gray-200 rounded-full h-2.5">
-                <motion.div
-                  className="bg-blue-600 h-2.5 rounded-full"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.proficiency}%` }}
-                  transition={{ duration: 1, delay: 0.6 }}
-                ></motion.div>
-              </div>
-
-              {/* Proficiency Percentage */}
-              <p className="text-sm text-gray-600 text-right mt-2">{skill.proficiency}%</p>
             </motion.div>
           ))}
         </div>
