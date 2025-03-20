@@ -1,10 +1,47 @@
-"use client"
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaLinkedinIn, FaWhatsapp } from 'react-icons/fa';
-import {  FaXTwitter } from 'react-icons/fa6';
+"use client";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import axios from "axios";
 
 export default function ContactUs() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      // Send form data using Axios
+      const response = await axios.post("/api/contact", formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.status === 200) {
+        alert(response.data.message); // Success message
+        setFormData({ name: "", email: "", message: "" }); // Clear form
+      } else {
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Failed to send message. Please try again.");
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
     <div className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -25,7 +62,8 @@ export default function ContactUs() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Have a question or want to work together? Feel free to reach out! I&apos;ll get back to you as soon as possible.
+          Have a question or want to work together? Feel free to reach out!
+          I&apos;ll get back to you as soon as possible.
         </motion.p>
 
         {/* Contact Form and Social Media Links */}
@@ -36,15 +74,21 @@ export default function ContactUs() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
+            onSubmit={handleSubmit} // Attach handleSubmit to form
           >
             <div className="mb-6">
-              <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">
+              <label
+                htmlFor="name"
+                className="block text-gray-700 font-semibold mb-2"
+              >
                 Name
               </label>
               <input
                 type="text"
                 id="name"
                 name="name"
+                value={formData.name} // Bind to state
+                onChange={handleChange} // Attach handleChange
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
                 placeholder="Your Name"
                 required
@@ -52,13 +96,18 @@ export default function ContactUs() {
             </div>
 
             <div className="mb-6">
-              <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
+              <label
+                htmlFor="email"
+                className="block text-gray-700 font-semibold mb-2"
+              >
                 Email
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
+                value={formData.email} // Bind to state
+                onChange={handleChange} // Attach handleChange
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
                 placeholder="Your Email"
                 required
@@ -66,17 +115,22 @@ export default function ContactUs() {
             </div>
 
             <div className="mb-6">
-              <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">
+              <label
+                htmlFor="message"
+                className="block text-gray-700 font-semibold mb-2"
+              >
                 Message
               </label>
               <textarea
                 id="message"
                 name="message"
-                rows={5} // Ensure `rows` is a number, not a string
+                rows={5}
+                value={formData.message} // Bind to state
+                onChange={handleChange} // Attach handleChange
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
                 placeholder="Your Message"
                 required
-                ></textarea>
+              ></textarea>
             </div>
 
             <button
@@ -105,12 +159,12 @@ export default function ContactUs() {
                 <FaLinkedinIn className="text-xl cursor-pointer hover:text-blue-600" />
               </a>
               <a
-                href="https://wa.me/yourphonenumber" // Replace with your GitHub profile
+                href="https://wa.me/+254790987845" // Replace with your WhatsApp link
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
               >
-               <FaWhatsapp className="text-xl cursor-pointer hover:text-green-500" />
+                <FaWhatsapp className="text-xl cursor-pointer hover:text-green-500" />
               </a>
               <a
                 href="https://twitter.com/your-profile" // Replace with your Twitter profile

@@ -1,6 +1,3 @@
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
-import Navbar from '@/components/Navbar'
 import React from 'react'
 import AboutUs from './(pages)/aboutus/page'
 import ContactUs from './(pages)/contactus/page'
@@ -13,15 +10,12 @@ function page() {
   return (
 
     <div>
-      <Header />
-      <Navbar />
       <Hero />
       <AboutUs />
       <Projects/>
       <Skills/>
       <Reviews/>
       <ContactUs/>
-      <Footer />
        </div>
   )
 }

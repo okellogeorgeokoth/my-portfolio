@@ -14,7 +14,7 @@ export default function Header() {
     "George Okello",
     "a Full Stack Developer",
     "a UI/UX Developer",
-    "a Monitoring and Evaluation Officer",
+    "a Data Analyst",
     "a GIS Expert",
     "a Virtual Assistant",
     "a Technical Writer",

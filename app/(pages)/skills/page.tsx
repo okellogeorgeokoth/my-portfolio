@@ -1,7 +1,10 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaReact, FaJsSquare, FaCss3Alt, FaNodeJs, FaPython, FaGitAlt } from 'react-icons/fa';
+import { FaReact, FaJsSquare, FaCss3Alt, FaNodeJs, FaPython, FaGitAlt, FaCode, FaMoneyBillAlt } from 'react-icons/fa';
+import { SiNextdotjs, SiMongodb, SiStripe, SiPaypal } from 'react-icons/si';
+import { SiSanity } from 'react-icons/si';
+import { GiSpiderWeb } from 'react-icons/gi';
 
 export default function Skills() {
   const skills = [
@@ -35,6 +38,42 @@ export default function Skills() {
       name: 'Git',
       icon: <FaGitAlt className="text-5xl text-red-600" />,
     },
+    {
+      id: 7,
+      name: 'Next.js',
+      icon: <SiNextdotjs className="text-5xl text-black" />,
+    },
+    {
+      id: 8,
+      name: 'Daraja API',
+      icon: <FaCode className="text-5xl text-green-700" />, // Generic API icon
+    },
+    {
+      id: 9,
+      name: 'Sanity',
+      icon: <SiSanity className="text-5xl text-pink-600" />,
+    },
+    {
+      id: 10,
+      name: 'MongoDB',
+      icon: <SiMongodb className="text-5xl text-green-500" />,
+    },
+    {
+      id: 11,
+      name: 'Stripe',
+      icon: <SiStripe className="text-5xl text-blue-500" />,
+    },
+    {
+      id: 12,
+      name: 'PayPal',
+      icon: <SiPaypal className="text-5xl text-blue-700" />,
+    },
+    {
+      id: 13,
+      name: 'Web Scraping',
+      icon: <GiSpiderWeb className="text-5xl text-orange-500" />,
+    },
+   
   ];
 
   return (
