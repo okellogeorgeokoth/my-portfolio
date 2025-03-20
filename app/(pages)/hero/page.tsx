@@ -38,7 +38,7 @@ function Hero() {
 
         {/* Resume Button */}
         <motion.a 
-          href="/path/to/your/resume.pdf" // Replace with the actual path to your resume
+          href="/resume/resume.pdf" // Replace with the actual path to your resume
           target="_blank"
           rel="noopener noreferrer"
           className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
