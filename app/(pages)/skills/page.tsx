@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaReact, FaJsSquare, FaCss3Alt, FaNodeJs, FaPython, FaGitAlt, FaCode, FaMoneyBillAlt } from 'react-icons/fa';
+import { FaReact, FaJsSquare, FaCss3Alt, FaNodeJs, FaPython, FaGitAlt, FaCode } from 'react-icons/fa';
 import { SiNextdotjs, SiMongodb, SiStripe, SiPaypal } from 'react-icons/si';
 import { SiSanity } from 'react-icons/si';
 import { GiSpiderWeb } from 'react-icons/gi';
@@ -73,7 +73,6 @@ export default function Skills() {
       name: 'Web Scraping',
       icon: <GiSpiderWeb className="text-5xl text-orange-500" />,
     },
-   
   ];
 
   return (
@@ -81,7 +80,7 @@ export default function Skills() {
       <div className="container mx-auto px-4">
         {/* Section Title */}
         <motion.h2
-          className="text-4xl font-bold text-center mb-8"
+          className="text-4xl text-black font-bold text-center mb-8"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -115,7 +114,7 @@ export default function Skills() {
               </div>
 
               {/* Skill Name */}
-              <h3 className="text-2xl font-semibold text-center mb-4">{skill.name}</h3>
+              <h3 className="text-2xl font-semibold text-center mb-4 text-black">{skill.name}</h3>
             </motion.div>
           ))}
         </div>

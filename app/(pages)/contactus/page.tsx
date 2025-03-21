@@ -47,7 +47,7 @@ export default function ContactUs() {
       <div className="container mx-auto px-4">
         {/* Section Title */}
         <motion.h2
-          className="text-4xl font-bold text-center mb-8"
+          className="text-4xl text-black font-bold text-center mb-8"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -151,7 +151,7 @@ export default function ContactUs() {
             <p className="text-gray-600 mb-4">Or connect with me on:</p>
             <div className="flex justify-center space-x-6">
               <a
-                href="https://linkedin.com/in/your-profile" // Replace with your LinkedIn profile
+                href="https://www.linkedin.com/in/george-o-a76513136/" // Replace with your LinkedIn profile
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
@@ -167,7 +167,7 @@ export default function ContactUs() {
                 <FaWhatsapp className="text-xl cursor-pointer hover:text-green-500" />
               </a>
               <a
-                href="https://twitter.com/your-profile" // Replace with your Twitter profile
+                href="https://x.com/GeorgeTechElite" // Replace with your Twitter profile
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-blue-600 transition-colors"

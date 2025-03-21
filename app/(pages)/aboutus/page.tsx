@@ -1,7 +1,6 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 export default function AboutMe() {
   return (
@@ -9,7 +8,7 @@ export default function AboutMe() {
       <div className="container mx-auto px-4">
         {/* Section Title */}
         <motion.h2
-          className="text-4xl font-bold text-center mb-8"
+          className="text-4xl text-black font-bold text-center mb-8"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -24,7 +23,7 @@ export default function AboutMe() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Hi, I'm George Okello, a passionate and creative software developer with a focus on building innovative solutions that make a difference. I specialize in web development, UI/UX design, and creating seamless user experiences. My mission is to empower businesses and individuals through technology and creativity.
+          Hi, I&apos;m George Okello, a passionate and creative software developer with a focus on building innovative solutions that make a difference. I specialize in web development, UI/UX design, and creating seamless user experiences. My mission is to empower businesses and individuals through technology and creativity.
         </motion.p>
 
         {/* Personal Profile */}
