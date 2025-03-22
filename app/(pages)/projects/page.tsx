@@ -1,66 +1,65 @@
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
-import { ProjectType } from "../types";
+import Link from "next/link"; // Import the Link component
 import { getProjects } from "@/sanity/lib/sanity.query";
 
-export default async function Project() {
-  const projects: ProjectType[] = await getProjects();
+// Define the type for a project
+interface Project {
+  _id: string;
+  logo: string;
+  name: string;
+  tagline: string;
+  slug: string; // Add slug to the Project interface
+}
+
+export default function ProjectsPage() {
+  // Explicitly type the `projects` state
+  const [projects, setProjects] = React.useState<Project[]>([]);
+
+  React.useEffect(() => {
+    async function fetchProjects() {
+      const data = await getProjects();
+      setProjects(data);
+    }
+    fetchProjects();
+  }, []);
 
   return (
     <div className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-      {/* Page Title and Description */}
-      <section className="max-w-2xl mb-16">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-5xl mb-6 lg:leading-[3.7rem] leading-tight text-black">
-          Featured projects I&apos;ve built over the years
-        </h1>
-        <p className="text-base text-zinc-600 leading-relaxed">
-          I&apos;ve worked on tons of little projects over the years but these
-          are the ones that I&apos;m most proud of. Many of them are
-          open-source, so if you see something that piques your interest, check
-          out the code and contribute if you have ideas for how it can be
-          improved.
-        </p>
-      </section>
-
-      {/* Projects Grid */}
-      <section className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mb-12">
-        {projects.map((project) => (
-          <Link
-          href={`/projects/${project.slug?.current}`} // Ensure this matches the dynamic route
-          key={project._id}
-          className="flex items-center gap-x-4 border border-zinc-200 hover:border-zinc-400 p-4 rounded-lg ease-in-out transition-all duration-300 bg-white shadow-sm hover:shadow-md"
+        <motion.h2
+          className="text-4xl text-black font-bold text-center mb-8"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-            {/* Project Logo */}
-            <div className="relative w-16 h-16 flex-shrink-0">
-              {project.logo ? (
+          Projects
+        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <Link
+              key={project._id}
+              href={`/projects/${project.slug}`} // Use the slug for dynamic routing
+              passHref
+            >
+              <div className="p-4 bg-white rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300">
                 <Image
                   src={project.logo}
-                  alt={project.name || "Project Logo"}
-                  width={60}
-                  height={60}
-                  className="rounded-md p-2 object-contain"
+                  alt={project.name}
+                  className="w-full h-40 object-cover rounded-md mb-4"
+                  width={300}
+                  height={160}
                 />
-              ) : (
-                <div className="flex items-center justify-center w-full h-full bg-gray-100 rounded-md p-2">
-                  <p className="text-sm text-gray-500">No Logo</p>
-                </div>
-              )}
-            </div>
-
-            {/* Project Details */}
-            <div>
-              <h2 className="font-semibold mb-1 text-black">
-                {project.name || "Unnamed Project"}
-              </h2>
-              <div className="text-sm text-zinc-600">
-                {project.tagline || "No tagline available"}
+                <h3 className="text-xl font-semibold">{project.name}</h3>
+                <p className="text-gray-600">{project.tagline}</p>
               </div>
-            </div>
-          </Link>
-        ))}
-      </section>
+            </Link>
+          ))}
+        </div>
       </div>
-      </div>
+    </div>
   );
 }

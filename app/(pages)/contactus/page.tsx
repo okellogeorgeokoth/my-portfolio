@@ -12,8 +12,11 @@ export default function ContactUs() {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false); // Track form submission state
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true); // Disable the submit button while processing
 
     try {
       // Send form data using Axios
@@ -32,6 +35,8 @@ export default function ContactUs() {
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false); // Re-enable the submit button
     }
   };
 
@@ -135,9 +140,10 @@ export default function ContactUs() {
 
             <button
               type="submit"
-              className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
+              disabled={isSubmitting} // Disable button while submitting
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </motion.form>
 

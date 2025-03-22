@@ -1,5 +1,6 @@
 import { groq } from "next-sanity";
 import { client } from "./client";
+import { ProjectType } from "@/app/(pages)/types";
 
 export async function getProjects() {
   return client.fetch(
@@ -12,40 +13,31 @@ export async function getProjects() {
     }`
   );
 }
+// sanity/lib/projects/getProjectBySlug.ts
 
-
-import { defineQuery } from "next-sanity";
-import { sanityFetch } from "@/sanity/lib/live"; // Adjust the import path as needed
-
-export const getProjectBySlug = async (slug: string) => {
-  const PROJECT_BY_SLUG_QUERY = defineQuery(`
+export async function getProjectBySlug(slug: string): Promise<ProjectType | null> {
+  const query = groq`
     *[_type == "project" && slug.current == $slug][0] {
       _id,
       name,
       tagline,
       description,
-      logo,
-      projectUrl,
-      slug {
-        current
-      },
-      coverImage {
-        alt,
-        image {
-          asset -> {
-            url
-          }
+      logo {
+        asset -> {
+          url
         }
+      },
+      projectUrl,
+      slug,
+      coverImage {
+        asset -> {
+          url
+        },
+        alt
       }
     }
-  `);
+  `;
 
-  try {
-    const project = await sanityFetch({ query: PROJECT_BY_SLUG_QUERY, params: { slug } });
-    console.log("Fetched Project:", project); // Debugging: Log fetched data
-    return project.data || null;
-  } catch (error) {
-    console.error("Error fetching project:", error);
-    return null;
-  }
-};
+  const project = await client.fetch<ProjectType | null>(query, { slug });
+  return project;
+}

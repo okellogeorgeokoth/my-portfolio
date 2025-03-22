@@ -1,7 +1,8 @@
-/** @type {import('next').NextConfig} */
+// next.config.js
+
 const nextConfig = {
   images: {
-    domains: ["cdn.sanity.io"], // Added "iili.io" to the allowed domains
+    domains: ['cdn.sanity.io'], // Add the domain(s) for your images
   },
 };
 
