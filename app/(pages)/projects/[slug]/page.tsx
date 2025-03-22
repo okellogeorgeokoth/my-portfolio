@@ -7,7 +7,7 @@ import { ProjectType } from '../../types';
 
 export default async function ProjectPage({ params }: { params: { slug: string } }) {
   try {
-    const { slug } = params;
+    const { slug } =await params;
 
     if (!slug) return notFound();
 
@@ -29,10 +29,10 @@ export default async function ProjectPage({ params }: { params: { slug: string }
           </h1>
 
           {/* Project Cover Image */}
-          {project.coverImage?.image?.asset?.url ? (
+          {project.coverImage?.asset?.url ? (
           <div className="relative h-96 w-full mb-6">
             <Image
-              src={project.coverImage.image.asset.url}
+              src={project.coverImage.asset.url}
               alt={project.coverImage.alt || "Project Cover Image"}
               fill
               className="object-cover rounded-lg"
