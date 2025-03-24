@@ -65,7 +65,7 @@ export default defineType({
       title: 'Product',
       type: 'reference',
       description: 'Link this review to a specific product (optional)',
-      to: [{ type: 'product' }], // Replace 'product' with your product schema name
+      to: [{ type: 'project' }], // Replace 'product' with your product schema name
     }),
     defineField({
       name: 'tags',

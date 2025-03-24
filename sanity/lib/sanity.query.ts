@@ -88,12 +88,12 @@ export async function getBlogBySlug(slug: string): Promise<BlogType | null> {
   return blog;
 }
 
-// Fetch all reviews
 export async function getReviews(): Promise<ReviewType[]> {
-  const query = groq`
+  const reviewsQuery = groq`
     *[_type == "review"] | order(date desc) {
       _id,
       name,
+      "slug": slug.current,  // Add this line to fetch the slug
       rating,
       comment,
       date,
@@ -112,7 +112,7 @@ export async function getReviews(): Promise<ReviewType[]> {
     }
   `;
 
-  const reviews = await client.fetch<ReviewType[]>(query);
+  const reviews = await client.fetch<ReviewType[]>(reviewsQuery);
   return reviews;
 }
 

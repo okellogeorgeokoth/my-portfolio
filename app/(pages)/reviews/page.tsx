@@ -27,11 +27,17 @@ export default async function ReviewsPage() {
                   height={50}
                 />
                 <div>
-                  <Link href={`/reviews/${review.slug.current}`}>
-                    <h3 className="text-lg font-semibold text-gray-900 hover:text-blue-600">
+                  {review.slug ? (
+                    <Link href={`/reviews/${review.slug}`}>
+                      <h3 className="text-lg font-semibold text-gray-900 hover:text-blue-600">
+                        {review.name}
+                      </h3>
+                    </Link>
+                  ) : (
+                    <h3 className="text-lg font-semibold text-gray-900">
                       {review.name}
                     </h3>
-                  </Link>
+                  )}
                   <div className="flex items-center space-x-1">
                     {[...Array(5)].map((_, i) => (
                       <span
