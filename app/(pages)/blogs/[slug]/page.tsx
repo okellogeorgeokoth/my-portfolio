@@ -7,19 +7,17 @@ import { PortableText } from '@portabletext/react';
 import { BlogType } from '../../types';
 
 
-export default async function BlogPage({ params }: { params: { slug: string } }) {
+export default async function BlogPage({ params }: { params:Promise<{ slug: string }>}) {
   try {
-    const { slug } = params;
+    const { slug } = await params;
 
     if (!slug) return notFound();
 
     console.log("Slug:", slug);
 
-    // Fetch the blog post
+    // Fetch the Blog
     const blog: BlogType | null = await getBlogBySlug(slug);
-
-    console.log("Blog Data:", JSON.stringify(blog, null, 2)); // Debug log
-
+    
     if (!blog) return notFound();
 
     return (

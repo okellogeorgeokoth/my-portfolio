@@ -36,3 +36,11 @@ export interface BlogType {
   publishedAt: string;
   content?: Any; // Portable Text content (array of blocks)
 }
+export interface BlogPageProps {
+  params: { slug: string }; // Slug for dynamic routing
+  blog: BlogType; // The blog post data
+}
+export interface ProjectPageProps {
+  params: { slug: string }; // Slug for dynamic routing
+  project: ProjectType; // The project data
+}

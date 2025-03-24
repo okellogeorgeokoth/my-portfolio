@@ -5,9 +5,9 @@ import { getProjectBySlug } from '@/sanity/lib/sanity.query';
 import { PortableText } from '@portabletext/react';
 import { ProjectType } from '../../types';
 
-export default async function ProjectPage({ params }: { params: { slug: string } }) {
+export default async function ProjectPage({ params }: { params:Promise<{ slug: string }>}) {
   try {
-    const { slug } =await params;
+    const { slug } = await params;
 
     if (!slug) return notFound();
 
@@ -15,9 +15,7 @@ export default async function ProjectPage({ params }: { params: { slug: string }
 
     // Fetch the project
     const project: ProjectType | null = await getProjectBySlug(slug);
-
-    console.log("Project Data:", JSON.stringify(project, null, 2)); // Debug log
-
+    
     if (!project) return notFound();
 
     return (
