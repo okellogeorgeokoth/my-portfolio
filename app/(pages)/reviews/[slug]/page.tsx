@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default async function ReviewPage({ params }: { params: { slug: string } }) {
+export default async function ReviewPage({ params }: { params:Promise<{ slug: string }>}) {
   try {
     const { slug } =await params;
 
