@@ -12,14 +12,13 @@ export default function ContactUs() {
     message: "",
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false); // Track form submission state
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true); // Disable the submit button while processing
+    setIsSubmitting(true);
 
     try {
-      // Send form data using Axios
       const response = await axios.post("/api/contact", formData, {
         headers: {
           "Content-Type": "application/json",
@@ -27,8 +26,8 @@ export default function ContactUs() {
       });
 
       if (response.status === 200) {
-        alert(response.data.message); // Success message
-        setFormData({ name: "", email: "", message: "" }); // Clear form
+        alert(response.data.message);
+        setFormData({ name: "", email: "", message: "" });
       } else {
         alert("Failed to send message. Please try again.");
       }
@@ -36,7 +35,7 @@ export default function ContactUs() {
       console.error("Error submitting form:", error);
       alert("Failed to send message. Please try again.");
     } finally {
-      setIsSubmitting(false); // Re-enable the submit button
+      setIsSubmitting(false);
     }
   };
 
@@ -50,7 +49,6 @@ export default function ContactUs() {
   return (
     <div className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        {/* Section Title */}
         <motion.h2
           className="text-4xl text-black font-bold text-center mb-8"
           initial={{ opacity: 0, y: -20 }}
@@ -60,7 +58,6 @@ export default function ContactUs() {
           Contact Us
         </motion.h2>
 
-        {/* Section Description */}
         <motion.p
           className="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12"
           initial={{ opacity: 0, y: -20 }}
@@ -71,15 +68,13 @@ export default function ContactUs() {
           I&apos;ll get back to you as soon as possible.
         </motion.p>
 
-        {/* Contact Form and Social Media Links */}
         <div className="max-w-2xl mx-auto">
-          {/* Contact Form */}
           <motion.form
             className="bg-white p-8 rounded-lg shadow-lg mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            onSubmit={handleSubmit} // Attach handleSubmit to form
+            onSubmit={handleSubmit}
           >
             <div className="mb-6">
               <label
@@ -92,9 +87,9 @@ export default function ContactUs() {
                 type="text"
                 id="name"
                 name="name"
-                value={formData.name} // Bind to state
-                onChange={handleChange} // Attach handleChange
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 text-black"
                 placeholder="Your Name"
                 required
               />
@@ -111,9 +106,9 @@ export default function ContactUs() {
                 type="email"
                 id="email"
                 name="email"
-                value={formData.email} // Bind to state
-                onChange={handleChange} // Attach handleChange
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 text-black"
                 placeholder="Your Email"
                 required
               />
@@ -130,9 +125,9 @@ export default function ContactUs() {
                 id="message"
                 name="message"
                 rows={5}
-                value={formData.message} // Bind to state
-                onChange={handleChange} // Attach handleChange
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 text-black"
                 placeholder="Your Message"
                 required
               ></textarea>
@@ -141,13 +136,12 @@ export default function ContactUs() {
             <button
               type="submit"
               className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
-              disabled={isSubmitting} // Disable button while submitting
+              disabled={isSubmitting}
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </motion.form>
 
-          {/* Social Media Links */}
           <motion.div
             className="text-center"
             initial={{ opacity: 0, y: 20 }}
@@ -157,7 +151,7 @@ export default function ContactUs() {
             <p className="text-gray-600 mb-4">Or connect with me on:</p>
             <div className="flex justify-center space-x-6">
               <a
-                href="https://www.linkedin.com/in/george-o-a76513136/" // Replace with your LinkedIn profile
+                href="https://www.linkedin.com/in/george-o-a76513136/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
@@ -165,7 +159,7 @@ export default function ContactUs() {
                 <FaLinkedinIn className="text-xl cursor-pointer hover:text-blue-600" />
               </a>
               <a
-                href="https://wa.me/+254790987845" // Replace with your WhatsApp link
+                href="https://wa.me/+254790987845"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
@@ -173,7 +167,7 @@ export default function ContactUs() {
                 <FaWhatsapp className="text-xl cursor-pointer hover:text-green-500" />
               </a>
               <a
-                href="https://x.com/GeorgeTechElite" // Replace with your Twitter profile
+                href="https://x.com/GeorgeTechElite"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 hover:text-blue-600 transition-colors"
