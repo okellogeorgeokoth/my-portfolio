@@ -1,6 +1,6 @@
 import { Any } from "next-sanity";
 
-// types.ts (or wherever your ProjectType is defined)
+// Project Type
 export interface ProjectType {
   name: string;
   tagline?: string;
@@ -19,7 +19,8 @@ export interface ProjectType {
     alt?: string; // Optional: Add `alt` for the logo as well
   } | null;
 }
-// types/blog.ts
+
+// Blog Type
 export interface BlogType {
   _id: string;
   title: string;
@@ -36,11 +37,43 @@ export interface BlogType {
   publishedAt: string;
   content?: Any; // Portable Text content (array of blocks)
 }
+
+// Review Type
+export interface ReviewType {
+  slug: Any;
+  _id: string;
+  name: string;
+  rating: number;
+  comment: string;
+  date: string;
+  avatar: {
+    asset: {
+      url: string;
+    };
+    alt?: string;
+  };
+  isFeatured?: boolean;
+  product?: {
+    _ref: string;
+    _type: string;
+  };
+  tags?: string[];
+}
+
+// Blog Page Props
 export interface BlogPageProps {
   params: { slug: string }; // Slug for dynamic routing
   blog: BlogType; // The blog post data
 }
+
+// Project Page Props
 export interface ProjectPageProps {
   params: { slug: string }; // Slug for dynamic routing
   project: ProjectType; // The project data
+}
+
+// Review Page Props
+export interface ReviewPageProps {
+  params: { slug: string }; // Slug for dynamic routing (if needed)
+  review: ReviewType; // The review data
 }
