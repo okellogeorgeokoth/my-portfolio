@@ -75,7 +75,9 @@ export type Review = {
   _updatedAt: string;
   _rev: string;
   name?: string;
-  rating?: number;
+  company?: string;
+  jobTitle?: string;
+  rating?: 1 | 2 | 3 | 4 | 5;
   comment?: string;
   date?: string;
   avatar?: {
@@ -90,7 +92,24 @@ export type Review = {
     alt?: string;
     _type: "image";
   };
-  isFeatured?: boolean;
+  screenshot?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    caption?: string;
+    _type: "image";
+  };
+  verification?: {
+    verified?: boolean;
+    method?: "email" | "social" | "video" | "other";
+    date?: string;
+  };
   product?: {
     _ref: string;
     _type: "reference";
@@ -98,6 +117,8 @@ export type Review = {
     [internalGroqTypeReferenceTo]?: "project";
   };
   tags?: Array<string>;
+  isFeatured?: boolean;
+  slug?: Slug;
 };
 
 export type Project = {

@@ -1,26 +1,55 @@
-import { Any } from "next-sanity";
+import { PortableTextBlock } from "@portabletext/types";
 
-// Project Type
+// Project Type - matches getProjects() and getProjectBySlug() queries
 export interface ProjectType {
+  _id: string;
   name: string;
+  slug?: {
+    current: string;
+  };
   tagline?: string;
   projectUrl?: string;
-  description?: Any; // PortableText or other rich text format
+  description?: PortableTextBlock[];
   coverImage?: {
     asset: {
-      url: string | null;
-    } | null;
-    alt?: string; // Add the `alt` property here
-  } | null;
+      _ref?: string;
+      url: string;
+      metadata?: {
+        dimensions?: {
+          width: number;
+          height: number;
+          aspectRatio: number;
+        };
+      };
+    };
+    alt?: string;
+    caption?: string;
+  };
   logo?: {
     asset: {
-      url: string | null;
-    } | null;
-    alt?: string; // Optional: Add `alt` for the logo as well
-  } | null;
+      _ref?: string;
+      url: string;
+      metadata?: {
+        dimensions?: {
+          width: number;
+          height: number;
+          aspectRatio: number;
+        };
+      };
+    };
+    alt?: string;
+  };
+  technologies?: string[];
+  startDate?: string;
+  endDate?: string;
+  isFeatured?: boolean;
+  githubUrl?: string;
+  caseStudy?: PortableTextBlock[];
+  _createdAt?: string;
+  _updatedAt?: string;
 }
 
-// Blog Type
+// Blog Type - matches getBlogs() and getBlogBySlug() queries
 export interface BlogType {
   _id: string;
   title: string;
@@ -30,50 +59,156 @@ export interface BlogType {
   description: string;
   coverImage?: {
     asset: {
+      _ref?: string;
       url: string;
+      metadata?: {
+        dimensions?: {
+          width: number;
+          height: number;
+          aspectRatio: number;
+        };
+      };
     };
     alt?: string;
+    caption?: string;
   };
   publishedAt: string;
-  content?: Any; // Portable Text content (array of blocks)
+  content?: Array<
+    PortableTextBlock | {
+      _type: 'image';
+      asset: {
+        url: string;
+        metadata?: {
+          dimensions?: {
+            width: number;
+            height: number;
+            aspectRatio: number;
+          };
+        };
+      };
+    }
+  >;
+  readingTime?: number;
+  tags?: string[];
+  author?: {
+    name: string;
+    avatar?: {
+      asset: {
+        url: string;
+      };
+      alt?: string;
+    };
+  };
+  seo?: {
+    title?: string;
+    description?: string;
+    keywords?: string[];
+  };
+  _createdAt?: string;
+  _updatedAt?: string;
 }
 
-// Review Type
+// Review Type - matches getReviews(), getReviewBySlug(), and getFeaturedReviews() queries
 export interface ReviewType {
-  slug: Any;
   _id: string;
+  slug?: {
+    current: string;
+  };
   name: string;
   rating: number;
   comment: string;
   date: string;
   avatar: {
     asset: {
+      _ref?: string;
       url: string;
+      metadata?: {
+        dimensions?: {
+          width: number;
+          height: number;
+          aspectRatio: number;
+        };
+      };
     };
     alt?: string;
+  };
+  screenshot?: {
+    asset: {
+      _ref?: string;
+      url: string;
+      metadata?: {
+        dimensions?: {
+          width: number;
+          height: number;
+          aspectRatio: number;
+        };
+      };
+    };
+    alt?: string;
+    caption?: string;
   };
   isFeatured?: boolean;
   product?: {
     _ref: string;
     _type: string;
+    name?: string;
+    slug?: {
+      current: string;
+    };
   };
+  company?: string;
+  jobTitle?: string;
   tags?: string[];
+  verification?: {
+    verified: boolean;
+    method?: 'email' | 'social' | 'video';
+    date?: string;
+  };
+  _createdAt?: string;
+  _updatedAt?: string;
 }
 
-// Blog Page Props
+// Page Props Types
 export interface BlogPageProps {
-  params: { slug: string }; // Slug for dynamic routing
-  blog: BlogType; // The blog post data
+  params: { slug: string };
+  blog: BlogType;
+  relatedPosts?: BlogType[];
 }
 
-// Project Page Props
 export interface ProjectPageProps {
-  params: { slug: string }; // Slug for dynamic routing
-  project: ProjectType; // The project data
+  params: { slug: string };
+  project: ProjectType;
+  relatedProjects?: ProjectType[];
 }
 
-// Review Page Props
 export interface ReviewPageProps {
-  params: { slug: string }; // Slug for dynamic routing (if needed)
-  review: ReviewType; // The review data
+  params: { slug: string };
+  review: ReviewType;
+  relatedReviews?: ReviewType[];
+}
+
+// Generic Types
+export interface SanityAsset {
+  _ref?: string;
+  _type?: string;
+  asset: {
+    url: string;
+    metadata?: {
+      dimensions?: {
+        width: number;
+        height: number;
+        aspectRatio: number;
+      };
+    };
+  };
+  alt?: string;
+  caption?: string;
+}
+
+export interface SEOProps {
+  title?: string;
+  description?: string;
+  image?: string;
+  keywords?: string[];
+  canonicalUrl?: string;
 }

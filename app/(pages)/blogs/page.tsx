@@ -4,15 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getBlogs } from '@/sanity/lib/sanity.query';
 
-interface Blog {
-  _id: string;
-  slug: string;
-  title: string;
-  description: string;
-  coverImage?: string;
-  publishedAt: string;
-}
-
 export default async function BlogsPage() {
   const blogs = await getBlogs();
 
@@ -21,12 +12,12 @@ export default async function BlogsPage() {
       <div className="container mx-auto px-4">
         <h1 className="text-4xl font-bold text-black text-center mb-8">Blog</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {blogs.map((blog: Blog) => (
+          {blogs.map((blog) => (
             <Link key={blog._id} href={`/blogs/${blog.slug}`}>
               <div className="p-4 bg-white rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300">
-                {blog.coverImage && (
+                {blog.coverImage?.asset?.url && (
                   <Image
-                    src={blog.coverImage}
+                    src={blog.coverImage.asset.url}
                     alt={blog.title}
                     width={400}
                     height={250}

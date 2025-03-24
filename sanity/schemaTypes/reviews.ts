@@ -1,95 +1,236 @@
 import { defineField, defineType } from 'sanity';
-import { FaStar } from 'react-icons/fa'; // Using a star icon for reviews
+import { FaStar, FaCheckCircle, FaImage } from 'react-icons/fa';
 
 export default defineType({
   name: 'review',
   title: 'Review',
-  description: 'Schema for customer reviews',
+  description: 'Customer testimonials and product reviews',
   type: 'document',
-  icon: FaStar, // Use a star icon for the review schema
+  icon: FaStar,
   fields: [
     defineField({
       name: 'name',
-      title: 'Name',
+      title: 'Reviewer Name',
       type: 'string',
-      description: 'Enter the name of the reviewer',
-      validation: (rule) => rule.required().min(2).max(50),
+      description: 'Full name of the reviewer',
+      validation: (Rule) => Rule.required().min(2).max(50),
     }),
+
+    defineField({
+      name: 'company',
+      title: 'Company',
+      type: 'string',
+      description: "Reviewer's company/organization (optional)",
+      validation: (Rule) => Rule.max(50),
+    }),
+
+    defineField({
+      name: 'jobTitle',
+      title: 'Job Title',
+      type: 'string',
+      description: "Reviewer's professional position (optional)",
+      validation: (Rule) => Rule.max(50),
+    }),
+
     defineField({
       name: 'rating',
       title: 'Rating',
       type: 'number',
-      description: 'Rate the product/service (1-5 stars)',
-      validation: (rule) => rule.required().min(1).max(5),
+      description: 'Rating from 1 to 5 stars',
+      validation: (Rule) => Rule.required().min(1).max(5).integer(),
+      options: {
+        list: [
+          { title: '★', value: 1 },
+          { title: '★★', value: 2 },
+          { title: '★★★', value: 3 },
+          { title: '★★★★', value: 4 },
+          { title: '★★★★★', value: 5 },
+        ],
+        layout: 'radio',
+      },
     }),
+
     defineField({
       name: 'comment',
-      title: 'Comment',
+      title: 'Review Content',
       type: 'text',
-      description: 'Write the review comment',
-      validation: (rule) => rule.required().min(10).max(500),
+      description: 'The main review text (50-500 characters)',
+      validation: (Rule) => Rule.required().min(50).max(500),
+      rows: 4,
     }),
+
     defineField({
       name: 'date',
-      title: 'Date',
+      title: 'Review Date',
       type: 'date',
-      description: 'Select the date of the review',
-      validation: (rule) => rule.required(),
+      description: 'When the review was submitted',
+      validation: (Rule) => Rule.required(),
+      options: {
+        dateFormat: 'MMMM D, YYYY',
+      },
+      initialValue: new Date().toISOString().split('T')[0],
     }),
+
     defineField({
       name: 'avatar',
-      title: 'Avatar',
+      title: 'Reviewer Avatar',
       type: 'image',
-      description: 'Upload the reviewer\'s avatar',
+      description: 'Profile photo of the reviewer',
       options: { hotspot: true },
       fields: [
         defineField({
           name: 'alt',
           title: 'Alt Text',
           type: 'string',
-          description: 'Add alternative text for the avatar',
-          validation: (rule) => rule.required(),
+          description: 'Accessible description of the avatar',
+          validation: (Rule) => Rule.required(),
         }),
       ],
-      validation: (rule) => rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
+
     defineField({
-      name: 'isFeatured',
-      title: 'Featured Review',
-      type: 'boolean',
-      description: 'Mark this review as featured to highlight it',
-      initialValue: false,
+      name: 'screenshot',
+      title: 'Screenshot Evidence',
+      type: 'image',
+      description: 'Optional screenshot proving the review (e.g., email, social media post)',
+      icon: FaImage,
+      options: { hotspot: true },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          description: 'Description of the screenshot',
+        }),
+        defineField({
+          name: 'caption',
+          title: 'Caption',
+          type: 'string',
+          description: 'Brief context about the screenshot',
+        }),
+      ],
     }),
+
+    defineField({
+      name: 'verification',
+      title: 'Verification',
+      type: 'object',
+      description: 'Review verification details',
+      icon: FaCheckCircle,
+      fields: [
+        defineField({
+          name: 'verified',
+          title: 'Verified',
+          type: 'boolean',
+          initialValue: false,
+        }),
+        defineField({
+          name: 'method',
+          title: 'Verification Method',
+          type: 'string',
+          options: {
+            list: [
+              { title: 'Email', value: 'email' },
+              { title: 'Social Media', value: 'social' },
+              { title: 'Video', value: 'video' },
+              { title: 'Other', value: 'other' },
+            ],
+            layout: 'radio',
+          },
+        }),
+        defineField({
+          name: 'date',
+          title: 'Verification Date',
+          type: 'date',
+        }),
+      ],
+    }),
+
     defineField({
       name: 'product',
-      title: 'Product',
+      title: 'Related Product',
       type: 'reference',
-      description: 'Link this review to a specific product (optional)',
-      to: [{ type: 'project' }], // Replace 'product' with your product schema name
+      description: 'Product/project this review is about',
+      to: [{ type: 'project' }],
+      options: {
+        disableNew: true,
+      },
     }),
+
     defineField({
       name: 'tags',
       title: 'Tags',
       type: 'array',
-      description: 'Add tags to categorize this review (e.g., "customer service", "quality")',
+      description: 'Categories for organizing reviews',
       of: [{ type: 'string' }],
       options: {
         layout: 'tags',
+        list: [
+          { title: 'Customer Service', value: 'customer-service' },
+          { title: 'Product Quality', value: 'product-quality' },
+          { title: 'Delivery', value: 'delivery' },
+          { title: 'Design', value: 'design' },
+          { title: 'Performance', value: 'performance' },
+        ],
       },
     }),
+
+    defineField({
+      name: 'isFeatured',
+      title: 'Featured Review',
+      type: 'boolean',
+      description: 'Show this review in featured sections',
+      initialValue: false,
+    }),
+
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      description: 'Unique identifier for this review',
+      options: {
+        source: 'name',
+        maxLength: 96,
+        isUnique: (value, context) => context.defaultIsUnique(value, context),
+      },
+      validation: (Rule) => Rule.required(),
+    }),
   ],
+
   preview: {
     select: {
       title: 'name',
       subtitle: 'comment',
+      rating: 'rating',
       media: 'avatar',
+      verified: 'verification.verified',
     },
-    prepare({ title, subtitle, media }) {
+    prepare({ title, subtitle, rating, media, verified }) {
+      const stars = Array(rating).fill('★').join('');
       return {
-        title,
-        subtitle: subtitle || 'No comment',
+        title: `${title} ${verified ? '✓' : ''}`,
+        subtitle: `${stars} - ${subtitle?.slice(0, 50)}...`,
         media,
       };
     },
   },
+
+  orderings: [
+    {
+      title: 'Rating, High',
+      name: 'ratingDesc',
+      by: [{ field: 'rating', direction: 'desc' }],
+    },
+    {
+      title: 'Date, Recent',
+      name: 'dateDesc',
+      by: [{ field: 'date', direction: 'desc' }],
+    },
+    {
+      title: 'Featured First',
+      name: 'featuredDesc',
+      by: [{ field: 'isFeatured', direction: 'desc' }],
+    },
+  ],
 });
