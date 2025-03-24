@@ -7,7 +7,6 @@ export interface ProjectType {
   projectUrl?: string;
   description?: Any; // PortableText or other rich text format
   coverImage?: {
-    image: Any;
     asset: {
       url: string | null;
     } | null;
@@ -19,4 +18,21 @@ export interface ProjectType {
     } | null;
     alt?: string; // Optional: Add `alt` for the logo as well
   } | null;
+}
+// types/blog.ts
+export interface BlogType {
+  _id: string;
+  title: string;
+  slug: {
+    current: string;
+  };
+  description: string;
+  coverImage?: {
+    asset: {
+      url: string;
+    };
+    alt?: string;
+  };
+  publishedAt: string;
+  content?: Any; // Portable Text content (array of blocks)
 }

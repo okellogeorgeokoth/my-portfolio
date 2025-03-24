@@ -121,32 +121,15 @@ export type Project = {
   }>;
 };
 
-export type BlogPost = {
+export type Blog = {
   _id: string;
-  _type: "blogPost";
+  _type: "blog";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   title?: string;
   slug?: Slug;
-  author?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "author";
-  };
-  image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  excerpt?: string;
+  description?: string;
   content?: Array<{
     children?: Array<{
       marks?: Array<string>;
@@ -154,7 +137,7 @@ export type BlogPost = {
       _type: "span";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "blockquote";
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
     listItem?: "bullet" | "number";
     markDefs?: Array<{
       href?: string;
@@ -164,7 +147,8 @@ export type BlogPost = {
     level?: number;
     _type: "block";
     _key: string;
-  } | {
+  }>;
+  coverImage?: {
     asset?: {
       _ref: string;
       _type: "reference";
@@ -173,17 +157,10 @@ export type BlogPost = {
     };
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt?: string;
     _type: "image";
-    _key: string;
-  }>;
+  };
   publishedAt?: string;
-  categories?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
 };
 
 export type Post = {
@@ -396,52 +373,5 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Project | BlogPost | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Project | Blog | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
-// Source: ./app/(pages)/types/index.ts
-// Variable: PROJECT_BY_SLUG_QUERY
-// Query: *[_type == "project" && slug.current == $slug][0] {      _id,      name,      tagline,      description,      logo {        asset -> {          url        }      },      projectUrl,      slug {        current      },      coverImage {        alt,        image {          asset -> {            url          }        }      }    }
-export type PROJECT_BY_SLUG_QUERYResult = {
-  _id: string;
-  name: string | null;
-  tagline: string | null;
-  description: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }> | null;
-  logo: {
-    asset: {
-      url: string | null;
-    } | null;
-  } | null;
-  projectUrl: string | null;
-  slug: {
-    current: string | null;
-  } | null;
-  coverImage: {
-    alt: string | null;
-    image: null;
-  } | null;
-} | null;
-
-// Query TypeMap
-import "@sanity/client";
-declare module "@sanity/client" {
-  interface SanityQueries {
-    "\n    *[_type == \"project\" && slug.current == $slug][0] {\n      _id,\n      name,\n      tagline,\n      description,\n      logo {\n        asset -> {\n          url\n        }\n      },\n      projectUrl,\n      slug {\n        current\n      },\n      coverImage {\n        alt,\n        image {\n          asset -> {\n            url\n          }\n        }\n      }\n    }\n  ": PROJECT_BY_SLUG_QUERYResult;
-  }
-}
