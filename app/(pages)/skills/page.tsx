@@ -1,78 +1,49 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaReact, FaJsSquare, FaCss3Alt, FaNodeJs, FaPython, FaGitAlt, FaCode } from 'react-icons/fa';
-import { SiNextdotjs, SiMongodb, SiStripe, SiPaypal } from 'react-icons/si';
-import { SiSanity } from 'react-icons/si';
-import { GiSpiderWeb } from 'react-icons/gi';
+import { FiServer, FiShield, FiZap, FiClock, FiCode, FiCloud, FiDatabase, FiTerminal } from 'react-icons/fi';
+import { SiZapier, SiGooglecloud, SiUbuntu, SiLinux } from 'react-icons/si';
+import { FaNetworkWired, FaRobot, FaWindows } from 'react-icons/fa';
+import { VscAzureDevops } from "react-icons/vsc";
 
 export default function Skills() {
-  const skills = [
+  const skillCategories = [
     {
-      id: 1,
-      name: 'React',
-      icon: <FaReact className="text-5xl text-blue-600" />,
+      title: "IT Support & Infrastructure",
+      skills: [
+        { name: "Remote Desktop Support", icon: <FiServer className="text-4xl text-blue-500" /> },
+        { name: "Network Troubleshooting", icon: <FaNetworkWired className="text-4xl text-green-500" /> },
+        { name: "System Administration", icon: <SiUbuntu className="text-4xl text-orange-500" /> },
+        { name: "Windows/Linux Servers", icon: <FaWindows className="text-4xl text-blue-400" /> }
+      ]
     },
     {
-      id: 2,
-      name: 'JavaScript',
-      icon: <FaJsSquare className="text-5xl text-yellow-400" />,
+      title: "Automation & Integration",
+      skills: [
+        { name: "Zapier Automation", icon: <SiZapier className="text-4xl text-blue-400" /> },
+        { name: "Python Scripting", icon: <FiTerminal className="text-4xl text-yellow-500" /> },
+        { name: "AI Workflows", icon: <FaRobot className="text-4xl text-purple-500" /> },
+        { name: "API Integrations", icon: <FiCode className="text-4xl text-green-400" /> }
+      ]
     },
     {
-      id: 3,
-      name: 'Tailwind CSS',
-      icon: <FaCss3Alt className="text-5xl text-blue-400" />,
+      title: "Cloud & Security",
+      skills: [
+        { name: "AWS/Azure Setup", icon: <VscAzureDevops className="text-4xl text-blue-600" /> },
+        { name: "Cybersecurity", icon: <FiShield className="text-4xl text-red-500" /> },
+        { name: "Data Backup Solutions", icon: <FiDatabase className="text-4xl text-indigo-500" /> },
+        { name: "Cloud Migration", icon: <FiCloud className="text-4xl text-sky-400" /> }
+      ]
     },
     {
-      id: 4,
-      name: 'Node.js',
-      icon: <FaNodeJs className="text-5xl text-green-600" />,
-    },
-    {
-      id: 5,
-      name: 'Python',
-      icon: <FaPython className="text-5xl text-blue-500" />,
-    },
-    {
-      id: 6,
-      name: 'Git',
-      icon: <FaGitAlt className="text-5xl text-red-600" />,
-    },
-    {
-      id: 7,
-      name: 'Next.js',
-      icon: <SiNextdotjs className="text-5xl text-black" />,
-    },
-    {
-      id: 8,
-      name: 'Daraja API',
-      icon: <FaCode className="text-5xl text-green-700" />, // Generic API icon
-    },
-    {
-      id: 9,
-      name: 'Sanity',
-      icon: <SiSanity className="text-5xl text-pink-600" />,
-    },
-    {
-      id: 10,
-      name: 'MongoDB',
-      icon: <SiMongodb className="text-5xl text-green-500" />,
-    },
-    {
-      id: 11,
-      name: 'Stripe',
-      icon: <SiStripe className="text-5xl text-blue-500" />,
-    },
-    {
-      id: 12,
-      name: 'PayPal',
-      icon: <SiPaypal className="text-5xl text-blue-700" />,
-    },
-    {
-      id: 13,
-      name: 'Web Scraping',
-      icon: <GiSpiderWeb className="text-5xl text-orange-500" />,
-    },
+      title: "Productivity Tools",
+      skills: [
+        { name: "Helpdesk Systems", icon: <FiClock className="text-4xl text-amber-500" /> },
+        { name: "CRM Configuration", icon: <SiGooglecloud className="text-4xl text-red-400" /> },
+        { name: "Documentation", icon: <FiCode className="text-4xl text-gray-500" /> },
+        { name: "24/7 Emergency Support", icon: <FiZap className="text-4xl text-green-600" /> }
+      ]
+    }
   ];
 
   return (
@@ -85,7 +56,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Skills
+          Technical Expertise
         </motion.h2>
 
         {/* Section Description */}
@@ -95,30 +66,36 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Here are some of the skills I&apos;ve developed over the years. I&apos;m always learning and improving to stay ahead in the ever-evolving tech landscape.
+          My toolkit for solving technical challenges and streamlining business operations
         </motion.p>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skills.map((skill) => (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {skillCategories.map((category, index) => (
             <motion.div
-              key={skill.id}
-              className="bg-white p-6 rounded-lg shadow-lg"
+              key={index}
+              className="bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-500"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              {/* Skill Icon */}
-              <div className="text-center mb-4">
-                {skill.icon}
+              <h3 className="text-2xl font-bold mb-4 text-gray-800">{category.title}</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {category.skills.map((skill, skillIndex) => (
+                  <motion.div
+                    key={skillIndex}
+                    className="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors"
+                    whileHover={{ scale: 1.03 }}
+                  >
+                    <div className="text-blue-500">{skill.icon}</div>
+                    <span className="font-medium text-gray-700">{skill.name}</span>
+                  </motion.div>
+                ))}
               </div>
-
-              {/* Skill Name */}
-              <h3 className="text-2xl font-semibold text-center mb-4 text-black">{skill.name}</h3>
             </motion.div>
           ))}
         </div>
       </div>
     </div>
   );
-}
+} 

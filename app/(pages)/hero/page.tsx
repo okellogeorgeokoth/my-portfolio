@@ -1,53 +1,106 @@
-"use client"
+"use client";
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FiZap, FiShield, FiServer, FiClock } from 'react-icons/fi';
 
 function Hero() {
   return (
-    <div className="relative h-screen flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: "url('/Banner1.jpg')" }}>
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black opacity-50"></div>
-
-      {/* Content */}
-      <motion.div 
-        className="relative z-10 text-center text-white"
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+    <div className="relative h-[90vh] min-h-[600px] w-full overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center z-0"
+        style={{ 
+          backgroundImage: "url('/Banner1.jpg')",
+          backgroundAttachment: 'fixed'
+        }}
       >
-        {/* Profile Image */}
-        <motion.div
-          className="w-32 h-32 rounded-full overflow-hidden border-4 border-white mx-auto mb-6"
-          style={{ backgroundImage: "url('/Profile.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
-          whileHover={{ scale: 1.1 }}
-        ></motion.div>
+        <div className="absolute inset-0 bg-black opacity-70"></div>
+      </div>
 
-        {/* Title and Subtitle */}
-        <motion.h1 
-          className="text-6xl font-bold mb-4"
-          whileHover={{ scale: 1.05 }}
+      {/* Content Container */}
+      <div className="relative z-10 h-full w-full flex items-center justify-center px-4">
+        <motion.div 
+          className="w-full max-w-2xl mx-auto text-center text-white py-12 px-4"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
         >
-          Hi, I&apos;m George Okello
-        </motion.h1>
-        <motion.p 
-          className="text-xl mb-8"
-          whileHover={{ scale: 1.05 }}
-        >
-          A passionate Software Developer building innovative solutions.
-        </motion.p>
+          {/* Profile Image */}
+          <motion.div
+            className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-blue-500 mx-auto mb-4 sm:mb-6 shadow-lg bg-cover bg-center"
+            style={{ backgroundImage: "url('/Profile.jpg')" }}
+            whileHover={{ scale: 1.1 }}
+          />
 
-        {/* Resume Button */}
-        <motion.a 
-          href="/resume/resume.pdf" // Replace with the actual path to your resume
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          Download Resume
-        </motion.a>
-      </motion.div>
+          {/* Headline */}
+          <motion.h1 
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 leading-tight"
+          >
+            <span className="block text-blue-400 text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 font-semibold tracking-wide">Tech Problems?</span>
+            <span className="font-extrabold tracking-tight">I'm Your <span className="text-blue-300">24/7</span> Tech Fixer</span>
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            className="text-base sm:text-lg mb-5 sm:mb-6 max-w-md mx-auto leading-relaxed font-medium"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            <span className="text-white">George Okello</span> - <span className="text-blue-300 font-semibold">Lead Technical VA</span> specializing in IT support, automation & cybersecurity.
+          </motion.p>
+
+          {/* Value Points */}
+          <motion.div 
+            className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8 max-w-xs sm:max-w-md mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            {[
+              { icon: <FiServer className="text-blue-400 text-xl sm:text-2xl" />, text: "IT Support" },
+              { icon: <FiZap className="text-green-400 text-xl sm:text-2xl" />, text: "Automation" },
+              { icon: <FiShield className="text-purple-400 text-xl sm:text-2xl" />, text: "Cybersecurity" },
+              { icon: <FiClock className="text-orange-400 text-xl sm:text-2xl" />, text: "24/7 Available" }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="flex flex-col items-center gap-1 sm:gap-2 text-sm sm:text-base font-medium"
+                whileHover={{ scale: 1.05 }}
+              >
+                {item.icon}
+                <span>{item.text}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div 
+            className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <motion.a
+              href="#contact"
+              className="px-5 py-3 sm:px-6 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors shadow-lg text-sm sm:text-base"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Emergency Tech Help →
+            </motion.a>
+            
+            <motion.a
+              href="/va-services.pdf"
+              className="px-5 py-3 sm:px-6 sm:py-3 bg-transparent border-2 border-white hover:bg-white hover:text-black rounded-lg font-semibold transition-colors text-sm sm:text-base"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Download Service Menu
+            </motion.a>
+          </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 }

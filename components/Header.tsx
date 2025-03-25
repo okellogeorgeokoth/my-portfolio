@@ -13,15 +13,16 @@ export default function Header() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const phrases = [
     "George Okello",
-    "a Full Stack Developer",
-    "a UI/UX Developer",
-    "a Data Analyst",
-    "a GIS Expert",
-    "a Virtual Assistant",
-    "a Technical Writer",
-    "a natural Problem Solver",
-    "a Coffee Lover",
-  ];
+    "a Technical Virtual Assistant",
+    "an IT Support Specialist",
+    "a Workflow Automation Expert",
+    "a Cybersecurity Consultant",
+    "a Cloud Solutions Specialist",
+    "a Systems Troubleshooter",
+    "a 24/7 Tech Problem-Solver",
+    "a Productivity Optimizer",
+    "a Tech Solutions Provider"
+];
 
   useEffect(() => {
     // Set up an interval to change the text every 5 seconds
