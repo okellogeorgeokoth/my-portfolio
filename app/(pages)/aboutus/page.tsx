@@ -93,7 +93,7 @@ export default function AboutMe() {
               <span className="text-blue-600">Fun Fact:</span> I once debugged a client's e-commerce checkout system during their Black Friday sale - saved them $28,000 in lost revenue!
             </p>
             <button className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
-              Let's Prevent Your Next Tech Emergency
+              Let &apos;s Prevent Your Next Tech Emergency
             </button>
           </motion.div>
         </motion.div>
