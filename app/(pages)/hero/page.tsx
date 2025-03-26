@@ -82,7 +82,7 @@ function Hero() {
             transition={{ delay: 0.5 }}
           >
             <motion.a
-              href="#contact"
+              href="/contactus"
               className="px-5 py-3 sm:px-6 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors shadow-lg text-sm sm:text-base"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -91,12 +91,12 @@ function Hero() {
             </motion.a>
             
             <motion.a
-              href="/va-services.pdf"
+              href="/resume.pdf"
               className="px-5 py-3 sm:px-6 sm:py-3 bg-transparent border-2 border-white hover:bg-white hover:text-black rounded-lg font-semibold transition-colors text-sm sm:text-base"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Download Service Menu
+              Download Resume
             </motion.a>
           </motion.div>
         </motion.div>
