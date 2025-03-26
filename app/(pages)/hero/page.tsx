@@ -82,7 +82,7 @@ function Hero() {
             transition={{ delay: 0.5 }}
           >
             <motion.a
-              href="#contact"
+              href="/contactus"
               className="px-5 py-3 sm:px-6 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors shadow-lg text-sm sm:text-base"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
