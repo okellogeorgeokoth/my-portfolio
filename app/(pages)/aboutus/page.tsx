@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiServer, FiShield, FiZap, FiClock } from 'react-icons/fi';
 
-export default function AboutMe() {
+export default function Aboutus() {
   return (
     <div className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
