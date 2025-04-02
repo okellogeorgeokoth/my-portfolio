@@ -126,7 +126,7 @@ export default function Header() {
     <FaWhatsapp className="text-xl cursor-pointer text-black hover:text-green-500" />
   </motion.a>
   <motion.a
-    href="mailto:okoth603@gmail.com?subject=Inquiry about a Service &body=Hello George, I wanted to ask about..."
+    href="mailto:okoth603@gmail.com?subject=Inquiry about a Service &body=Hello George, I wanted to ask about...."
     target="_blank"
     rel="noopener noreferrer"
     variants={item}
