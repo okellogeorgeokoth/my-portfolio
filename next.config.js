@@ -1,8 +1,13 @@
-// next.config.js
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['cdn.sanity.io'], // Add the domain(s) for your images
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        pathname: '/**', // Allow all paths
+      },
+    ],
   },
 };
 
