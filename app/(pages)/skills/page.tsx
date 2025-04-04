@@ -1,47 +1,49 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiServer, FiShield, FiZap, FiClock, FiCode, FiCloud, FiDatabase, FiTerminal } from 'react-icons/fi';
-import { SiZapier, SiGooglecloud, SiUbuntu, SiLinux } from 'react-icons/si';
-import { FaNetworkWired, FaRobot, FaWindows } from 'react-icons/fa';
-import { VscAzureDevops } from "react-icons/vsc";
+import { FiDatabase, FiCode, FiLayers, FiTrendingUp, FiSmartphone, FiServer, FiShield, FiCloud } from 'react-icons/fi';
+import { SiReact, SiNextdotjs, SiNodedotjs, SiMongodb, SiPostgresql, SiPython } from 'react-icons/si';
 
 export default function Skills() {
   const skillCategories = [
     {
-      title: "IT Support & Infrastructure",
+      title: "Fullstack Development",
+      description: "Building complete web applications from front to back",
       skills: [
-        { name: "Remote Desktop Support", icon: <FiServer className="text-4xl text-blue-500" /> },
-        { name: "Network Troubleshooting", icon: <FaNetworkWired className="text-4xl text-green-500" /> },
-        { name: "System Administration", icon: <SiUbuntu className="text-4xl text-orange-500" /> },
-        { name: "Windows/Linux Servers", icon: <FaWindows className="text-4xl text-blue-400" /> }
+        { name: "React & Next.js", icon: <SiReact className="text-4xl text-blue-500" />, description: "Modern, responsive user interfaces" },
+        { name: "Node.js Backend", icon: <SiNodedotjs className="text-4xl text-green-500" />, description: "Server-side logic and APIs" },
+        { name: "Database Systems", icon: <FiDatabase className="text-4xl text-orange-500" />, description: "MongoDB, PostgreSQL, cloud databases" },
+        { name: "Sanity CMS", icon: <FiLayers className="text-4xl text-purple-500" />, description: "Content management solutions" }
       ]
     },
     {
-      title: "Automation & Integration",
+      title: "Data & Automation",
+      description: "Transforming raw data into actionable insights",
       skills: [
-        { name: "Zapier Automation", icon: <SiZapier className="text-4xl text-blue-400" /> },
-        { name: "Python Scripting", icon: <FiTerminal className="text-4xl text-yellow-500" /> },
-        { name: "AI Workflows", icon: <FaRobot className="text-4xl text-purple-500" /> },
-        { name: "API Integrations", icon: <FiCode className="text-4xl text-green-400" /> }
+        { name: "Data Dashboards", icon: <FiTrendingUp className="text-4xl text-red-500" />, description: "Interactive reports with Power BI" },
+        { name: "Python Scripting", icon: <SiPython className="text-4xl text-yellow-500" />, description: "Automate repetitive tasks" },
+        { name: "Kobo Toolbox", icon: <FiSmartphone className="text-4xl text-green-400" />, description: "Mobile data collection systems" },
+        { name: "Data Cleaning", icon: <FiDatabase className="text-4xl text-indigo-500" />, description: "Ensure data accuracy and quality" }
       ]
     },
     {
-      title: "Cloud & Security",
+      title: "Health Informatics",
+      description: "Technology solutions for healthcare systems",
       skills: [
-        { name: "AWS/Azure Setup", icon: <VscAzureDevops className="text-4xl text-blue-600" /> },
-        { name: "Cybersecurity", icon: <FiShield className="text-4xl text-red-500" /> },
-        { name: "Data Backup Solutions", icon: <FiDatabase className="text-4xl text-indigo-500" /> },
-        { name: "Cloud Migration", icon: <FiCloud className="text-4xl text-sky-400" /> }
+        { name: "KenyaEMR", icon: <FiServer className="text-4xl text-blue-600" />, description: "Electronic medical records" },
+        { name: "DHIS2 Integration", icon: <FiCloud className="text-4xl text-sky-400" />, description: "National health reporting" },
+        { name: "HIV/STI Reporting", icon: <FiShield className="text-4xl text-red-500" />, description: "Public health data systems" },
+        { name: "M&E Systems", icon: <FiTrendingUp className="text-4xl text-amber-500" />, description: "Monitoring & evaluation tools" }
       ]
     },
     {
-      title: "Productivity Tools",
+      title: "Technical Support",
+      description: "Keeping systems running smoothly",
       skills: [
-        { name: "Helpdesk Systems", icon: <FiClock className="text-4xl text-amber-500" /> },
-        { name: "CRM Configuration", icon: <SiGooglecloud className="text-4xl text-red-400" /> },
-        { name: "Documentation", icon: <FiCode className="text-4xl text-gray-500" /> },
-        { name: "24/7 Emergency Support", icon: <FiZap className="text-4xl text-green-600" /> }
+        { name: "IT Troubleshooting", icon: <FiServer className="text-4xl text-gray-500" />, description: "Hardware & software issues" },
+        { name: "Web Hosting", icon: <FiCloud className="text-4xl text-blue-400" />, description: "Domain setup & management" },
+        { name: "Technical Training", icon: <FiCode className="text-4xl text-green-600" />, description: "User guides & documentation" },
+        { name: "Linux Systems", icon: <FiServer className="text-4xl text-orange-400" />, description: "Server administration" }
       ]
     }
   ];
@@ -51,12 +53,12 @@ export default function Skills() {
       <div className="container mx-auto px-4">
         {/* Section Title */}
         <motion.h2
-          className="text-4xl text-black font-bold text-center mb-8"
+          className="text-4xl text-black font-bold text-center mb-4"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Technical Expertise
+          My Skills & Expertise
         </motion.h2>
 
         {/* Section Description */}
@@ -66,7 +68,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          My toolkit for solving technical challenges and streamlining business operations
+          I build technology solutions that solve real-world problems, with a focus on healthcare, data systems, and business automation.
         </motion.p>
 
         {/* Skills Grid */}
@@ -79,16 +81,20 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">{category.title}</h3>
+              <h3 className="text-2xl font-bold mb-2 text-gray-800">{category.title}</h3>
+              <p className="text-gray-500 mb-4">{category.description}</p>
               <div className="grid grid-cols-2 gap-4">
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div
                     key={skillIndex}
-                    className="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors"
+                    className="flex flex-col p-3 hover:bg-gray-50 rounded-lg transition-colors"
                     whileHover={{ scale: 1.03 }}
                   >
-                    <div className="text-blue-500">{skill.icon}</div>
-                    <span className="font-medium text-gray-700">{skill.name}</span>
+                    <div className="flex items-center space-x-3 mb-2">
+                      <div>{skill.icon}</div>
+                      <span className="font-medium text-gray-700">{skill.name}</span>
+                    </div>
+                    <p className="text-sm text-gray-500 pl-11">{skill.description}</p>
                   </motion.div>
                 ))}
               </div>
@@ -98,4 +104,4 @@ export default function Skills() {
       </div>
     </div>
   );
-} 
+}

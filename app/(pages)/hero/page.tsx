@@ -1,7 +1,8 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiZap, FiShield, FiServer, FiClock } from 'react-icons/fi';
+import { FiCode, FiDatabase, FiTrendingUp, FiShield } from 'react-icons/fi';
+import { SiReact, SiNextdotjs, SiNodedotjs } from 'react-icons/si';
 
 function Hero() {
   return (
@@ -36,8 +37,8 @@ function Hero() {
           <motion.h1 
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 leading-tight"
           >
-            <span className="block text-blue-400 text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 font-semibold tracking-wide">Tech Problems?</span>
-            <span className="font-extrabold tracking-tight">I'm Your <span className="text-blue-300">24/7</span> Tech Fixer</span>
+            <span className="block text-blue-400 text-2xl sm:text-3xl md:text-4xl mb-2 sm:mb-3 font-semibold tracking-wide">Fullstack Developer</span>
+            <span className="font-extrabold tracking-tight">Building <span className="text-blue-300">Data-Driven</span> Solutions</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -47,7 +48,7 @@ function Hero() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            <span className="text-white">George Okello</span> - <span className="text-blue-300 font-semibold">Lead Technical VA</span> specializing in IT support, automation & cybersecurity.
+            <span className="text-white">George Okello</span> - <span className="text-blue-300 font-semibold">MERN/PERN Stack</span> specialist with expertise in health informatics and data automation.
           </motion.p>
 
           {/* Value Points */}
@@ -58,10 +59,10 @@ function Hero() {
             transition={{ delay: 0.4 }}
           >
             {[
-              { icon: <FiServer className="text-blue-400 text-xl sm:text-2xl" />, text: "IT Support" },
-              { icon: <FiZap className="text-green-400 text-xl sm:text-2xl" />, text: "Automation" },
-              { icon: <FiShield className="text-purple-400 text-xl sm:text-2xl" />, text: "Cybersecurity" },
-              { icon: <FiClock className="text-orange-400 text-xl sm:text-2xl" />, text: "24/7 Available" }
+              { icon: <SiReact className="text-blue-400 text-xl sm:text-2xl" />, text: "React/Next.js" },
+              { icon: <SiNodedotjs className="text-green-400 text-xl sm:text-2xl" />, text: "Node.js" },
+              { icon: <FiDatabase className="text-purple-400 text-xl sm:text-2xl" />, text: "Data Systems" },
+              { icon: <FiTrendingUp className="text-orange-400 text-xl sm:text-2xl" />, text: "Health Tech" }
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -87,7 +88,7 @@ function Hero() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Emergency Tech Help →
+              Let's Build Your Project →
             </motion.a>
             
             <motion.a
