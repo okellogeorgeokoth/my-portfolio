@@ -6,7 +6,7 @@ import { SiReact, SiNextdotjs } from 'react-icons/si';
 
 export default function Aboutus() {
   return (
-    <div className="py-16 bg-gray-50">
+    <div id='aboutus' className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         {/* Section Title */}
         <motion.h2
