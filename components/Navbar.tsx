@@ -52,7 +52,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      <div className="hidden md:flex justify-center flex-1 space-x-8">
+      {/*<div className="hidden md:flex justify-center flex-1 space-x-8">
         <Link href="/" className="text-blue-600 hover:text-blue-400 flex items-center">
           <FaHome className="mr-2" /> Home
         </Link>
@@ -71,7 +71,7 @@ export default function Navbar() {
         <Link href="/contactus" className="text-blue-600 hover:text-blue-400 flex items-center">
           <FaEnvelope className="mr-2" /> Contact
         </Link>
-      </div>
+      </div>*/}
     </div>
     <div
   ref={menuRef}
